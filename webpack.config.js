@@ -5,13 +5,18 @@ module.exports = {
         path: './src/static/',
         filename: 'bundle.js'
     },
+    resolve: {
+      extensions: ['', '.js', '.jsx']
+    },
     module: {
       loaders: [
-        { test: /\.js$/,
+        { test: /\.(js|jsx)$/,
           exclude: /node_modules/,
           loader: "babel-loader",
           query: {
-            presets: ['es2015', 'react']
+            presets: ['es2015', 'react'],
+            plugins: ["transform-object-rest-spread",
+            "transform-class-properties"]
           }
         },
         {

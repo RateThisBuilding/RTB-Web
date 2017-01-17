@@ -7,6 +7,7 @@ export default class Header extends Component {
       <header className="header">
         <h1 className="title">
           <IndexLink to={this.props.root}>App</IndexLink>
+          This is fetched from the server!!!
         </h1>
       </header>
     )

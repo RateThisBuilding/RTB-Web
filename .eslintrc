@@ -1,0 +1,23 @@
+{
+    "parser" : "babel-eslint",
+    "extends": "eslint-config-airbnb",
+    "globals": {
+      "describe" : true,
+      "it" : true,
+      "before" : true,
+      "after" : true
+    },
+    "rules" : {
+      "arrow-body-style": [2, "as-needed"],
+      "react/forbid-prop-types" : "off",
+      "semi": [2, "never"],
+      "comma-dangle": [1, "always-multiline"],
+      "sort-imports": "off",
+      "func-names": "off",
+      "new-cap": "off",
+      "react/prefer-stateless-function": "off",
+      "consistent-return": "off",
+      "no-unused-vars" : 1,
+      "jsx-quotes": "off"
+    }
+}

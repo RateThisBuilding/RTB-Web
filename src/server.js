@@ -3,15 +3,24 @@ import express from 'express'
 import React, { DOM } from 'react'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import { match } from 'react-router'
+import { match, RoutingContext } from 'react-router'
 import HBS from 'express-handlebars'
+import fs from 'fs'
 
 import ReactDOMServer, { renderToString } from 'react-dom/server'
 import configureStore from './store/configureStore'
 import routes from './routes'
 import TestComp from './components/TestComp'
+import routerManager from './server/routerManager'
 // import counterApp from './reducers'
 // import App from './containers/App'
+
+// class AugmentedRoutingContext extends RoutingContext {
+//   createElement(component, props){
+//     const context = this.props.context;
+//     // return component == null ? null : this.props.createElement(component, {...props, ...{context}});
+//   }
+// }
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -19,22 +28,14 @@ const port = process.env.PORT || 3000
 app.use(express.static(path.join(__dirname, 'static')))
 app.set('views', path.resolve(__dirname, 'templates'))
 app.engine('hbs', HBS({
-      extname:'hbs',
-      defaultLayout:'main.hbs',
-      layoutsDir: path.resolve(__dirname, 'templates', 'layouts')
-  }));
-app.set('view engine', 'hbs');
+  extname: 'hbs',
+  defaultLayout: 'main.hbs',
+  layoutsDir: path.resolve(__dirname, 'templates', 'layouts')
+}))
+app.set('view engine', 'hbs')
 
-// page routes
-const router = express.Router();
-router.get('*', (req,res) => {
-  match({routes, location: req.originalUrl}, (err, redirectLocation, renderProps) => {
-    if(!err){
-      res.render('index')
-    }
-  })
-})
-app.use(router)
+app.use('/api', routerManager.constructAPIRouter())
+app.use('/', routerManager.constructPageRouter())
 
 // API routes
 // ** TO BE ADDED **
@@ -95,4 +96,6 @@ app.use(router)
 //     `
 // }
 
-app.listen(port)
+app.listen(port, (err)=> {
+    console.log(`Server has started at port ${port}`);
+})
