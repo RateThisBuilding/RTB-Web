@@ -1,14 +1,25 @@
 import React, { Component } from 'react'
-import { IndexLink } from 'react-router'
+import { IndexLink, Link } from 'react-router'
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
+
 
 export default class Header extends Component {
   render() {
     return (
       <header className="header">
-        <h1 className="title">
-          <IndexLink to={this.props.root}>App</IndexLink>
-          This is fetched from the server!!!
-        </h1>
+        <Navbar>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <a href="/">RateThisBuilding</a>
+            </Navbar.Brand>
+          </Navbar.Header>
+          <Nav>
+            <NavItem eventKey={1} href="/cards">Cards</NavItem>
+          </Nav>
+          <Nav pullRight>
+            <NavItem eventKey={2}  href="#">Login</NavItem>
+          </Nav>
+        </Navbar>
       </header>
     )
   }

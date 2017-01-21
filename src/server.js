@@ -30,7 +30,8 @@ app.set('views', path.resolve(__dirname, 'templates'))
 app.engine('hbs', HBS({
   extname: 'hbs',
   defaultLayout: 'main.hbs',
-  layoutsDir: path.resolve(__dirname, 'templates', 'layouts')
+  layoutsDir: path.resolve(__dirname, 'templates', 'layouts'),
+  partialsDir: path.resolve(__dirname, 'templates', 'partials')
 }))
 app.set('view engine', 'hbs')
 

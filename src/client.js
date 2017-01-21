@@ -1,3 +1,5 @@
+require('./stylesheets/styles.scss')
+
 import React from 'react'
 import { Router, browserHistory } from 'react-router'
 import Bootstrap from 'bootstrap/dist/css/bootstrap.css'

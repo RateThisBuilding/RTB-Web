@@ -9,8 +9,10 @@ import CardList from './containers/CardList'
 export default (
   <Route path="/" component={App}>
     <Route component={Dashboard}>
-      <IndexRoute component={CardList} />
+      <Route path="cards" component={CardList} />
+      <Route path="buildings" />
     </Route>
+
     {/* <Route path="*" component={NoMatch}/> */}
   </Route>
 )
