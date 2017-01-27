@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "npm run server & npm run client",
-    "server": "nodemon --watch src/server.js --watch src/server/* --exec babel-node src/server.js",
+    "server": "nodemon --config nodemon.json src/server.js",
     "client": "webpack"
   },
   "dependencies": {

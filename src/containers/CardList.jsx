@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Row, Col } from 'react-bootstrap'
 import Card from '../components/Card'
 
 export default class CardList extends Component {
@@ -38,12 +39,16 @@ export default class CardList extends Component {
   }
   render() {
     return (
-      <section>
-        <header><h3>Latest Cards</h3></header>
-        <section>
-          {this.renderCards()}
-        </section>
-      </section>
+      <Row>
+        <Col xs={12} md={12}>
+          <section>
+            <header><h3>Latest Cards</h3></header>
+            <section>
+              {this.renderCards()}
+            </section>
+          </section>
+        </Col>
+      </Row>
     )
   }
 }

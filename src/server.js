@@ -10,7 +10,6 @@ import fs from 'fs'
 import ReactDOMServer, { renderToString } from 'react-dom/server'
 import configureStore from './store/configureStore'
 import routes from './routes'
-import TestComp from './components/TestComp'
 import routerManager from './server/routerManager'
 // import counterApp from './reducers'
 // import App from './containers/App'
@@ -26,6 +25,7 @@ const app = express()
 const port = process.env.PORT || 3000
 
 app.use(express.static(path.join(__dirname, 'static')))
+app.use(express.static(path.join(__dirname, 'assets')))
 app.set('views', path.resolve(__dirname, 'templates'))
 app.engine('hbs', HBS({
   extname: 'hbs',
