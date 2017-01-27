@@ -9,10 +9,10 @@ import Header from './Header'
 export default class App extends Component {
   render() {
     return (
-      <Grid className="full-height">
+      <div className="full-height">
         <Header root={this.props.route.path}/>
         {this.props.children}
-      </Grid>
+      </div>
     )
   }
 }
