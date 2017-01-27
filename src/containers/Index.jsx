@@ -10,6 +10,9 @@ const GoogleMaps = withGoogleMap(props => (
     defaultZoom={3}
     defaultCenter={{ lat: -25.363882, lng: 131.044922 }}
     onClick={props.onMapClick}
+    defaultOptions={{
+      scrollwheel: false
+    }}
   >
     {props.markers.map((marker, index) => (
       <Marker
