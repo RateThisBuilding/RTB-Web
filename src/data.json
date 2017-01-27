@@ -10,5 +10,31 @@
       "name": "Card 2",
       "desc": "Test"
     }
+  ],
+  "buildings": [
+    {
+      "id": 0,
+      "name": "Spectrum",
+      "desc": "Some description for Spectrum",
+      "rating": 5,
+      "address": "802-131 Regiment Square",
+      "year": 2009
+    },
+    {
+      "id": 1,
+      "name": "Spectrum",
+      "desc": "Some description for Spectrum",
+      "rating": 5,
+      "address": "802-131 Regiment Square",
+      "year": 2009
+    },
+    {
+      "id": 2,
+      "name": "Spectrum",
+      "desc": "Some description for Spectrum",
+      "rating": 5,
+      "address": "802-131 Regiment Square",
+      "year": 2009
+    }
   ]
 }

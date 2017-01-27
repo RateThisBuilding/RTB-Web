@@ -24,7 +24,8 @@ export default class Index extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      searchQuery: ""
+      searchQuery: "",
+      buildings: this.props.buildings || window.APP_STATE.buildings || []
     }
   }
   getValidationState() {
@@ -35,6 +36,18 @@ export default class Index extends Component {
   }
   searchOnChange(e) {
     this.setState({ searchQuery: e.target.value })
+  }
+
+  renderSuggestedCards() {
+    if (!this.state.buildings) {
+      return (<div>No Buildings</div>)
+    }
+    return this.state.buildings.map(building => (
+      <Col xs={3} md={3} key={building.id}>
+        <BuildingCard building={building} />
+      </Col>
+      )
+    )
   }
   render() {
     return (
@@ -81,16 +94,7 @@ export default class Index extends Component {
         <Col xs={12} md={12}>
           <h1 className="center">Featured Buildings</h1>
         </Col>
-        <Col xs={3} md={3}>
-          <BuildingCard
-            building={{
-              name: 'Spectrum',
-              desc: 'Some description for Spectrum',
-              rating: 5,
-              address: '802-131 Regiment Square',
-              year: 2009
-            }} />
-        </Col>
+        {this.renderSuggestedCards()}
       </Row>
     )
   }

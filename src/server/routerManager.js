@@ -14,6 +14,7 @@ export default class routerManager {
     router.get('*', (req, res) => {
       match({ routes, location: req.originalUrl }, (err, redirectLocation, renderProps) => {
         if (!err) {
+          console.log(renderProps)
           fs.readFile(path.join(__dirname, '..', 'data.json'), 'utf-8', (fileReadErr, data) => {
             if (fileReadErr) throw fileReadErr
             // console.log(renderProps);
