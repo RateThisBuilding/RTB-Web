@@ -3,25 +3,9 @@ import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
 import { Grid, Row, Col, FormGroup, ControlLabel, FormControl, HelpBlock, Button } from 'react-bootstrap'
 
 import BuildingCard from '../components/BuildingCard'
+import GoogleMaps from '../components/GoogleMaps'
 
-const GoogleMaps = withGoogleMap(props => (
-  <GoogleMap
-    ref={props.onMapLoad}
-    defaultZoom={3}
-    defaultCenter={{ lat: -25.363882, lng: 131.044922 }}
-    onClick={props.onMapClick}
-    defaultOptions={{
-      scrollwheel: false
-    }}
-  >
-    {props.markers.map((marker, index) => (
-      <Marker
-        {...marker}
-        onRightClick={() => props.onMarkerRightClick(index)}
-      />
-    ))}
-  </GoogleMap>
-))
+
 
 export default class Index extends Component {
   constructor(props) {
@@ -59,22 +43,7 @@ export default class Index extends Component {
           <Grid>
             <Row>
               <Col xs={12} md={12}> {/* Google Maps */}
-                <GoogleMaps
-                  containerElement={
-                    <div style={{ height: '500px', backgroundColor: 'grey' }} />
-                  }
-                  mapElement={
-                    <div style={{ height: '100%' }} />
-                  }
-                  markers={[{
-                    position: {
-                      lat: 25.0112183,
-                      lng: 121.52067570000001,
-                    },
-                    key: `Taiwan`,
-                    defaultAnimation: 2,
-                  }]}
-                />
+                <GoogleMaps />
               </Col>
             </Row>
             <Row>
