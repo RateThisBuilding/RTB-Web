@@ -4,6 +4,7 @@ import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Image,
           FormGroup, ControlLabel, FormControl, HelpBlock, Clearfix } from 'react-bootstrap'
 
 
+
 export default class Header extends Component {
   constructor(props){
     super(props)
@@ -34,7 +35,7 @@ export default class Header extends Component {
             <NavItem eventKey={1} href="/cards">Become a Host</NavItem>
             <NavItem eventKey={2} href="#">Help</NavItem>
             <NavItem eventKey={3} href="#">Sign up</NavItem>
-            <NavItem eventKey={3} href="#">Login</NavItem>
+            <NavItem eventKey={3} href="/login">Login</NavItem>
           </Nav>
 
           {/*

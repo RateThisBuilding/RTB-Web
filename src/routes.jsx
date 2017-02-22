@@ -5,6 +5,7 @@ import App from './containers/App'
 import Dashboard from './containers/Dashboard'
 import Index from './containers/Index'
 import CardList from './containers/CardList'
+import Login from './containers/Login'
 
 
 export default (
@@ -12,6 +13,7 @@ export default (
     <Route component={Dashboard}>
       <IndexRoute component={Index} />
       <Route path="cards" component={CardList} />
+      <Route path="login" component={Login} />
       <Route path="buildings" />
     </Route>
 
