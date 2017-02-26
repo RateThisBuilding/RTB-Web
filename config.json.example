@@ -1,0 +1,4 @@
+module.exports = {
+	FACEBOOK_APPID: <-APP ID->,
+	FACEBOOK_APPSECRETS: <-APP SECRET->
+}
