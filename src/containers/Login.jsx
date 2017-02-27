@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Grid, Row, Col, FormGroup, ControlLabel, FormControl, HelpBlock, Button } from 'react-bootstrap'
+import { Link } from 'react-router'
 
 export default class Login extends Component {
 	constructor(props){
@@ -17,6 +18,10 @@ export default class Login extends Component {
 		this.setState({[field] : value})
 	}
 
+  fbLogin(){
+    window.location = "/auth/facebook";
+  }
+
 
 	render() {
 		return (
@@ -24,7 +29,7 @@ export default class Login extends Component {
         <div className="content-alt">
           <Grid>
             <Row>
-              <Col xs={12} md={12}> {/* Google Maps Search Box */}
+              <Col xs={4} md={4} xsOffset={4} mdOffset={4}> {/* Google Maps Search Box */}
               	<h1 className="center">Login</h1>
                 <form>
                   <FormGroup
@@ -52,13 +57,13 @@ export default class Login extends Component {
                     <FormControl.Feedback />
                   </FormGroup>
                 </form>
+                <Button bsStyle="primary" bsSize="large" block style={{width: '50%'}}>Login</Button>
+                <Button bsStyle="primary" bsSize="large" block style={{width: '50%'}} onClick={this.fbLogin}>Facebook</Button>
+                
               </Col>
+              
             </Row>
-            <Row>
-              <Col xs={2} md={2} xsOffset={10} mdOffset={10}>
-                <Button bsStyle="primary" bsSize="large" block>Login</Button>
-              </Col>
-            </Row>
+            
           </Grid>
         </div>
       </div>

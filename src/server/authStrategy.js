@@ -8,12 +8,13 @@ passport.serializeUser(function(user, cb) {
   cb(null, user);
 });
 
-passport.deserializeUser(function(obj, cb) {
-  cb(null, obj);
+passport.deserializeUser(function(id, cb) {
+  User.findById(id, function(err, user){
+    cb(err, user)
+  })
 });
 
-console.log(FACEBOOK_APPID)
-console.log(FACEBOOK_APPSECRET)
+
 passport.use(new FacebookStrategy({
   	clientID: FACEBOOK_APPID,
     clientSecret: FACEBOOK_APPSECRET,
@@ -21,8 +22,18 @@ passport.use(new FacebookStrategy({
     enableProof: true
   },
   function(accessToken, refreshToken, profile, cb) {
-    console.log('something here')
-    cb(null, profile)
+    
+    return User.findOrCreate({
+      where: {id: profile.id},
+      defaults : {
+        id: profile.id,
+        displayName: profile.displayName  
+      }
+    }).then(() => {
+        cb(null, profile)
+      }
+    )
+    
   }
 ))
 

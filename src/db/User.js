@@ -8,6 +8,13 @@ var User = sequelizeInstance.define('user', {
   },
   lastName: {
     type: Sequelize.STRING
+  },
+  id: {
+    type: Sequelize.STRING,
+    primaryKey: true
+  },
+  displayName: {
+    type: Sequelize.STRING
   }
 }, {
   freezeTableName: true // Model tableName will be the same as the model name
@@ -15,8 +22,6 @@ var User = sequelizeInstance.define('user', {
 
 User.sync({force: true}).then(function () {
   // Table created
-  return User.create({
-    firstName: 'John',
-    lastName: 'Hancock'
-  });
 });
+
+export default User

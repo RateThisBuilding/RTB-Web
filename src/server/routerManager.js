@@ -50,7 +50,7 @@ export default class routerManager {
   static constructAuthRouter() {
     const router = express.Router()
     router.get('/facebook', passport.authenticate('facebook'))
-    router.get('/fbcallback', passport.authenticate('facebook', { failureRedirect: '/login' }),
+    router.get('/fbcallback', passport.authenticate('facebook', { failureRedirect: '/login', failureFlash: 'Facebook login failed.' }),
       function(req, res) {
         // Successful authentication, redirect home.
         res.redirect('/');
