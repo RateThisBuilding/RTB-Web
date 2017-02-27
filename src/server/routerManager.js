@@ -4,9 +4,11 @@ import express from 'express'
 import React from 'react'
 import { match, RouterContext } from 'react-router'
 import { renderToString } from 'react-dom/server'
+
+import passport from './authStrategy'
 import routes from '../routes'
 
-
+console.log(passport)
 
 export default class routerManager {
   static constructPageRouter() {
@@ -14,7 +16,6 @@ export default class routerManager {
     router.get('*', (req, res) => {
       match({ routes, location: req.originalUrl }, (err, redirectLocation, renderProps) => {
         if (!err) {
-          console.log(renderProps)
           fs.readFile(path.join(__dirname, '..', 'data.json'), 'utf-8', (fileReadErr, data) => {
             if (fileReadErr) throw fileReadErr
             // console.log(renderProps);
@@ -34,7 +35,7 @@ export default class routerManager {
 
   static constructAPIRouter() {
     const router = express.Router()
-    router.get('/cardsData', (req, res) => {
+    router.get('/cardsData',(req, res) => {
       fs.readFile(path.join(__dirname, '..', 'data.json'), 'utf-8', (fileReadErr, data) => {
         if (!fileReadErr) {
           res.json(JSON.parse(data))
@@ -46,6 +47,18 @@ export default class routerManager {
     return router
   }
 
+  static constructAuthRouter() {
+    const router = express.Router()
+    router.get('/facebook', passport.authenticate('facebook'))
+    router.get('/fbcallback', passport.authenticate('facebook', { failureRedirect: '/login' }),
+      function(req, res) {
+        // Successful authentication, redirect home.
+        res.redirect('/');
+      })
+        
+    return router
+  }
+
   static pageRender(renderProps, data){
     const html = renderToString(
       <RouterContext {...renderProps} createElement={(Component, props) => {
@@ -54,4 +67,5 @@ export default class routerManager {
     )
     return html
   }
+
 }
